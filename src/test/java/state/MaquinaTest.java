@@ -1,41 +1,15 @@
-package org.example;
-
+package state;
+import org.example.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-/*
-Aguardando Moeda
-    Pode: Transitar para Aguardando Seleção de Produto ao selecionar um produto.
-    Pode: Entrar em Manutenção.
-    Não pode: Dispensar produto, devolver moeda, ou verificar produto disponível.
-Aguardando Seleção de Produto
-    Pode: Transitar para Produto Disponível.
-    Pode: Retornar para Aguardando Moeda.
-    Pode: Entrar em Manutenção.
-    Não pode: Dispensar produto diretamente ou devolver moeda.
-Produto Disponível
-    Pode: Dispensar produto e ir para Produto Dispensado.
-    Pode: Entrar em Manutenção.
-    Não pode: Retornar para Aguardando Moeda ou selecionar produto novamente.
-Produto Dispensado
-    Pode: Retornar para Aguardando Moeda.
-    Pode: Entrar em Manutenção.
-    Não pode: Selecionar produto ou dispensar novamente.
-Manutenção
-    Pode: Voltar para Aguardando Moeda.
-    Não pode: Selecionar produto, dispensar, ou outras interações de usuário.
-*/
 class MaquinaTest {
-
     private Maquina maquina;
-
     @BeforeEach
     void setUp() {
         maquina = new Maquina();
     }
-
     // Teste 1: Aguardando Moeda -> Aguardando Seleção de Produto
     @Test
     void testTransicaoDeAguardandoMoedaParaAguardandoSelecaoProduto() {
