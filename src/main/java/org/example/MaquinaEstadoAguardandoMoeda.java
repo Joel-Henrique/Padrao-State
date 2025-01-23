@@ -11,26 +11,14 @@ public class MaquinaEstadoAguardandoMoeda extends MaquinaEstado {
     }
 
     @Override
-    public boolean inserirMoeda(Maquina maquina) {
-        maquina.setEstado(MaquinaEstadoProdutoDisponivel.getInstance());
+    public boolean selecionarProduto(Maquina maquina) {
+        maquina.setEstado(MaquinaEstadoAguardandoSelecaoProduto.getInstance());
         return true;
     }
-
-    @Override
-    public boolean selecionarProduto(Maquina maquina) {
-        return false;
+    public boolean entrarManutencao(Maquina maquina) {
+        maquina.setEstado(MaquinaEstadoManutencao.getInstance());
+        return true;
     }
-
-    @Override
-    public boolean dispensarProduto(Maquina maquina) {
-        return false;
-    }
-
-    @Override
-    public boolean devolverMoeda(Maquina maquina) {
-        return false;
-    }
-
     @Override
     public String getEstado() {
         return "Aguardando Moeda";

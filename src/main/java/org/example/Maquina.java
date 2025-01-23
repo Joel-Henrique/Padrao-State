@@ -30,11 +30,12 @@ public class Maquina {
         return estado;
     }
     public boolean entrarManutencao() {
-        this.setEstado(MaquinaEstadoManutencao.getInstance());
-        return true;
+        return estado.entrarManutencao(this);
     }
-    public boolean sairManutencao() {
-        this.setEstado(MaquinaEstadoAguardandoMoeda.getInstance());
-        return true;
+    public boolean produtoDisponivel() {
+        return estado.produtoDisponivel(this);
+    }
+    public boolean aguardarMoeda() {
+        return estado.aguardarMoeda(this);
     }
 }

@@ -5,25 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9f7284c-a183-405b-9263-9ec265f75b29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Maquina.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/MaquinaEstado.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/MaquinaEstadoAguardandoMoeda.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/MaquinaEstadoManutencao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/MaquinaEstadoProdutoDispensado.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/MaquinaEstadoProdutoDisponivel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/state/MaquinaTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aspectos.drawio.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/MaquinaEstadoAguardandoSelecaoProduto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Maquina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Maquina.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MaquinaEstado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MaquinaEstado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MaquinaEstadoAguardandoMoeda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MaquinaEstadoAguardandoMoeda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MaquinaEstadoManutencao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MaquinaEstadoManutencao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MaquinaEstadoProdutoDispensado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MaquinaEstadoProdutoDispensado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MaquinaEstadoProdutoDisponivel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MaquinaEstadoProdutoDisponivel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/state/MaquinaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/state/MaquinaTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +42,18 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.MaquinaTest (1).executor": "Run",
+    "JUnit.MaquinaTest.estadoProdutoDispensado.executor": "Run",
+    "JUnit.MaquinaTest.estadoProdutoDisponivel.executor": "Run",
     "JUnit.MaquinaTest.executor": "Run",
+    "JUnit.MaquinaTest.testTransicaoDeAguardandoMoedaParaAguardandoSelecaoProduto.executor": "Run",
+    "JUnit.MaquinaTest.testTransicaoDeAguardandoMoedaParaManutencao.executor": "Run",
+    "JUnit.MaquinaTest.testTransicaoDeAguardandoMoedaParaProdutoDispensado.executor": "Run",
+    "JUnit.MaquinaTest.testTransicaoDeAguardandoMoedaParaProdutoDisponivel.executor": "Run",
+    "JUnit.MaquinaTest.testTransicaoDeAguardandoMoedaParaSelecaoProduto.executor": "Run",
+    "JUnit.MaquinaTest.testTransicaoDeAguardandoMoedaParaTransicaoDeManutencao.executor": "Run",
+    "JUnit.MaquinaTest.testTransicaoDeManutencaoParaAguardandoMoeda.executor": "Run",
+    "JUnit.MaquinaTest.testTransicaoDeProdutoDisponivelParaSelecaoProduto.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
@@ -70,26 +72,97 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\jorez\OneDrive\Área de Trabalho\Padrao-State\src" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jorez\OneDrive\Área de Trabalho\Padrao-State" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.MaquinaTest.testTransicaoDeProdutoDisponivelParaSelecaoProduto">
     <configuration name="MaquinaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Padrao-State" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="state.*" />
+          <option name="PATTERN" value="org.example.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="state" />
-      <option name="MAIN_CLASS_NAME" value="state.MaquinaTest" />
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.MaquinaTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MaquinaTest.testTransicaoDeAguardandoMoedaParaProdutoDispensado" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Padrao-State" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.MaquinaTest" />
+      <option name="METHOD_NAME" value="testTransicaoDeAguardandoMoedaParaProdutoDispensado" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MaquinaTest.testTransicaoDeAguardandoMoedaParaProdutoDisponivel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Padrao-State" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.MaquinaTest" />
+      <option name="METHOD_NAME" value="testTransicaoDeAguardandoMoedaParaProdutoDisponivel" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MaquinaTest.testTransicaoDeAguardandoMoedaParaSelecaoProduto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Padrao-State" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.MaquinaTest" />
+      <option name="METHOD_NAME" value="testTransicaoDeAguardandoMoedaParaSelecaoProduto" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MaquinaTest.testTransicaoDeProdutoDisponivelParaSelecaoProduto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Padrao-State" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.MaquinaTest" />
+      <option name="METHOD_NAME" value="testTransicaoDeProdutoDisponivelParaSelecaoProduto" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MaquinaTest.testTransicaoDeProdutoDisponivelParaSelecaoProduto" />
         <item itemvalue="JUnit.MaquinaTest" />
+        <item itemvalue="JUnit.MaquinaTest.testTransicaoDeAguardandoMoedaParaProdutoDisponivel" />
+        <item itemvalue="JUnit.MaquinaTest.testTransicaoDeAguardandoMoedaParaProdutoDispensado" />
+        <item itemvalue="JUnit.MaquinaTest.testTransicaoDeAguardandoMoedaParaSelecaoProduto" />
       </list>
     </recent_temporary>
   </component>
@@ -109,7 +182,8 @@
       <option name="presentableId" value="Default" />
       <updated>1737510027947</updated>
       <workItem from="1737510029072" duration="111000" />
-      <workItem from="1737510255649" duration="436000" />
+      <workItem from="1737510255649" duration="1303000" />
+      <workItem from="1737642071099" duration="7415000" />
     </task>
     <servers />
   </component>

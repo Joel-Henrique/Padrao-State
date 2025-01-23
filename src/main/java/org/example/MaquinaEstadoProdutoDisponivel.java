@@ -1,5 +1,5 @@
 package org.example;
-
+//
 public class MaquinaEstadoProdutoDisponivel extends MaquinaEstado {
 
     private static MaquinaEstadoProdutoDisponivel instance = new MaquinaEstadoProdutoDisponivel();
@@ -11,28 +11,15 @@ public class MaquinaEstadoProdutoDisponivel extends MaquinaEstado {
         return instance;
     }
 
-    @Override
-    public boolean inserirMoeda(Maquina maquina) {
-        return false;
-    }
-
-    @Override
-    public boolean selecionarProduto(Maquina maquina) {
+    public boolean dispensarProduto(Maquina maquina) {
         maquina.setEstado(MaquinaEstadoProdutoDispensado.getInstance());
         return true;
     }
-
     @Override
-    public boolean dispensarProduto(Maquina maquina) {
-        return false;
-    }
-
-    @Override
-    public boolean devolverMoeda(Maquina maquina) {
-        maquina.setEstado(MaquinaEstadoAguardandoMoeda.getInstance());
+    public boolean entrarManutencao(Maquina maquina) {
+        maquina.setEstado(MaquinaEstadoManutencao.getInstance());
         return true;
     }
-
     @Override
     public String getEstado() {
         return "Produto Disponível";

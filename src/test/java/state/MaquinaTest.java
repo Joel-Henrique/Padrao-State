@@ -1,133 +1,177 @@
-package state;
-import org.example.*;
+package org.example;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MaquinaTest {
-    Maquina maquina;
+/*
+Aguardando Moeda
+    Pode: Transitar para Aguardando Seleção de Produto ao selecionar um produto.
+    Pode: Entrar em Manutenção.
+    Não pode: Dispensar produto, devolver moeda, ou verificar produto disponível.
+Aguardando Seleção de Produto
+    Pode: Transitar para Produto Disponível.
+    Pode: Retornar para Aguardando Moeda.
+    Pode: Entrar em Manutenção.
+    Não pode: Dispensar produto diretamente ou devolver moeda.
+Produto Disponível
+    Pode: Dispensar produto e ir para Produto Dispensado.
+    Pode: Entrar em Manutenção.
+    Não pode: Retornar para Aguardando Moeda ou selecionar produto novamente.
+Produto Dispensado
+    Pode: Retornar para Aguardando Moeda.
+    Pode: Entrar em Manutenção.
+    Não pode: Selecionar produto ou dispensar novamente.
+Manutenção
+    Pode: Voltar para Aguardando Moeda.
+    Não pode: Selecionar produto, dispensar, ou outras interações de usuário.
+*/
+class MaquinaTest {
+
+    private Maquina maquina;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         maquina = new Maquina();
     }
 
+    // Teste 1: Aguardando Moeda -> Aguardando Seleção de Produto
     @Test
-    public void deveInserirMoedaNoEstadoAguardandoMoeda() {
+    void testTransicaoDeAguardandoMoedaParaAguardandoSelecaoProduto() {
         maquina.setEstado(MaquinaEstadoAguardandoMoeda.getInstance());
-        assertTrue(maquina.inserirMoeda());
-        assertEquals(MaquinaEstadoProdutoDisponivel.getInstance(), maquina.getEstadoAtual());
-    }
-
-    @Test
-    public void naoDeveSelecionarProdutoNoEstadoAguardandoMoeda() {
-        maquina.setEstado(MaquinaEstadoAguardandoMoeda.getInstance());
-        assertFalse(maquina.selecionarProduto());
-    }
-
-    @Test
-    public void naoDeveDispensarProdutoNoEstadoAguardandoMoeda() {
-        maquina.setEstado(MaquinaEstadoAguardandoMoeda.getInstance());
-        assertFalse(maquina.dispensarProduto());
-    }
-
-    @Test
-    public void naoDeveDevolverMoedaNoEstadoAguardandoMoeda() {
-        maquina.setEstado(MaquinaEstadoAguardandoMoeda.getInstance());
-        assertFalse(maquina.devolverMoeda());
-    }
-
-    // Estado: Produto Disponível
-
-    @Test
-    public void naoDeveInserirMoedaNoEstadoProdutoDisponivel() {
-        maquina.setEstado(MaquinaEstadoProdutoDisponivel.getInstance());
-        assertFalse(maquina.inserirMoeda());
-    }
-
-    @Test
-    public void deveSelecionarProdutoNoEstadoProdutoDisponivel() {
-        maquina.setEstado(MaquinaEstadoProdutoDisponivel.getInstance());
         assertTrue(maquina.selecionarProduto());
-        assertEquals(MaquinaEstadoProdutoDispensado.getInstance(), maquina.getEstadoAtual());
     }
 
+    // Teste 2: Aguardando Moeda -> Manutenção
     @Test
-    public void naoDeveDispensarProdutoNoEstadoProdutoDisponivel() {
-        maquina.setEstado(MaquinaEstadoProdutoDisponivel.getInstance());
-        assertFalse(maquina.dispensarProduto());
-    }
-
-    @Test
-    public void deveDevolverMoedaNoEstadoProdutoDisponivel() {
-        maquina.setEstado(MaquinaEstadoProdutoDisponivel.getInstance());
-        assertTrue(maquina.devolverMoeda());
-        assertEquals(MaquinaEstadoAguardandoMoeda.getInstance(), maquina.getEstadoAtual());
-    }
-
-    // Estado: Produto Dispensado
-
-    @Test
-    public void naoDeveInserirMoedaNoEstadoProdutoDispensado() {
-        maquina.setEstado(MaquinaEstadoProdutoDispensado.getInstance());
-        assertFalse(maquina.inserirMoeda());
-    }
-
-    @Test
-    public void naoDeveSelecionarProdutoNoEstadoProdutoDispensado() {
-        maquina.setEstado(MaquinaEstadoProdutoDispensado.getInstance());
-        assertFalse(maquina.selecionarProduto());
-    }
-
-    @Test
-    public void deveDispensarProdutoNoEstadoProdutoDispensado() {
-        maquina.setEstado(MaquinaEstadoProdutoDispensado.getInstance());
-        assertTrue(maquina.dispensarProduto());
-        assertEquals(MaquinaEstadoAguardandoMoeda.getInstance(), maquina.getEstadoAtual());
-    }
-
-    @Test
-    public void naoDeveDevolverMoedaNoEstadoProdutoDispensado() {
-        maquina.setEstado(MaquinaEstadoProdutoDispensado.getInstance());
-        assertFalse(maquina.devolverMoeda());
-    }
-
-    // Estado: Em Manutenção
-
-    @Test
-    public void deveEntrarEmManutencao() {
+    void testTransicaoDeAguardandoMoedaParaManutencao() {
+        maquina.setEstado(MaquinaEstadoAguardandoMoeda.getInstance());
         assertTrue(maquina.entrarManutencao());
-        assertEquals(MaquinaEstadoManutencao.getInstance(), maquina.getEstadoAtual());
     }
 
+    // Teste 3: Aguardando Moeda -> Produto Dispensado
     @Test
-    public void naoDeveInserirMoedaNoEstadoManutencao() {
+    void testTransicaoDeAguardandoMoedaParaProdutoDispensado() {
+        maquina.setEstado(MaquinaEstadoAguardandoMoeda.getInstance());
+        assertFalse(maquina.dispensarProduto());
+    }
+
+    // Teste 4: Aguardando Moeda -> Produto Disponível
+    @Test
+    void testTransicaoDeAguardandoMoedaParaProdutoDisponivel() {
+        maquina.setEstado(MaquinaEstadoAguardandoMoeda.getInstance());
+        assertFalse(maquina.produtoDisponivel());
+    }
+
+    // Teste 5: Aguardando Seleção de Produto -> Produto Disponível
+    @Test
+    void testTransicaoDeAguardandoSelecaoProdutoParaProdutoDisponivel() {
+        maquina.setEstado(MaquinaEstadoAguardandoSelecaoProduto.getInstance());
+        assertTrue(maquina.produtoDisponivel());
+    }
+
+    // Teste 6: Aguardando Seleção de Produto -> Aguardando Moeda
+    @Test
+    void testTransicaoDeAguardandoSelecaoProdutoParaAguardandoMoeda() {
+        maquina.setEstado(MaquinaEstadoAguardandoSelecaoProduto.getInstance());
+        assertTrue(maquina.aguardarMoeda());
+    }
+
+    // Teste 7: Aguardando Seleção de Produto -> Manutenção
+    @Test
+    void testTransicaoDeAguardandoSelecaoProdutoParaManutencao() {
+        maquina.setEstado(MaquinaEstadoAguardandoSelecaoProduto.getInstance());
+        assertTrue(maquina.entrarManutencao());
+    }
+
+    // Teste 8: Aguardando Seleção de Produto -> Produto Dispensado
+    @Test
+    void testTransicaoDeAguardandoSelecaoProdutoParaProdutoDispensado() {
+        maquina.setEstado(MaquinaEstadoAguardandoSelecaoProduto.getInstance());
+        assertFalse(maquina.dispensarProduto());
+    }
+
+    // Teste 9: Produto Disponível -> Produto Dispensado
+    @Test
+    void testTransicaoDeProdutoDisponivelParaProdutoDispensado() {
+        maquina.setEstado(MaquinaEstadoProdutoDisponivel.getInstance());
+        assertTrue(maquina.dispensarProduto());
+    }
+
+    // Teste 10: Produto Disponível -> Manutenção
+    @Test
+    void testTransicaoDeProdutoDisponivelParaManutencao() {
+        maquina.setEstado(MaquinaEstadoProdutoDisponivel.getInstance());
+        assertTrue(maquina.entrarManutencao());
+    }
+
+    // Teste 11: Produto Disponível -> Aguardando Moeda
+    @Test
+    void testTransicaoDeProdutoDisponivelParaAguardandoMoeda() {
+        maquina.setEstado(MaquinaEstadoProdutoDisponivel.getInstance());
+        assertFalse(maquina.aguardarMoeda());
+    }
+
+    // Teste 12: Produto Disponível -> Aguardando Seleção de Produto
+    @Test
+    void testTransicaoDeProdutoDisponivelParaSelecaoProduto() {
+        maquina.setEstado(MaquinaEstadoProdutoDisponivel.getInstance());
+        assertFalse(maquina.selecionarProduto());
+    }
+
+    // Teste 13: Produto Dispensado -> Aguardando Moeda
+    @Test
+    void testTransicaoDeProdutoDispensadoParaAguardandoMoeda() {
+        maquina.setEstado(MaquinaEstadoProdutoDispensado.getInstance());
+        assertTrue(maquina.aguardarMoeda());
+    }
+
+    // Teste 14: Produto Dispensado -> Manutenção
+    @Test
+    void testTransicaoDeProdutoDispensadoParaManutencao() {
+        maquina.setEstado(MaquinaEstadoProdutoDispensado.getInstance());
+        assertTrue(maquina.entrarManutencao());
+    }
+
+    // Teste 15: Produto Dispensado -> Selecionar Produto
+    @Test
+    void testTransicaoDeProdutoDispensadoParaSelecionarProduto() {
+        maquina.setEstado(MaquinaEstadoProdutoDispensado.getInstance());
+        assertFalse(maquina.selecionarProduto());
+    }
+    // Teste 16: Produto Dispensado -> Produto Disponivel
+    @Test
+    void testTransicaoDeProdutoDispensadoParaProdutoDisponivel() {
+        maquina.setEstado(MaquinaEstadoProdutoDispensado.getInstance());
+        assertFalse(maquina.produtoDisponivel());
+    }
+
+    // Teste 17: Manutenção -> Aguardando Moeda
+    @Test
+    void testTransicaoDeManutencaoParaAguardandoMoeda() {
         maquina.setEstado(MaquinaEstadoManutencao.getInstance());
-        assertFalse(maquina.inserirMoeda());
+        assertTrue(maquina.aguardarMoeda());
     }
 
+    // Teste 18: Manutenção -> Selecionar Produto
     @Test
-    public void naoDeveSelecionarProdutoNoEstadoManutencao() {
+    void testTransicaoDeManutencaoParaSelecionarProduto() {
         maquina.setEstado(MaquinaEstadoManutencao.getInstance());
         assertFalse(maquina.selecionarProduto());
     }
 
+    // Teste 19: Manutenção -> Produto Disponível
     @Test
-    public void naoDeveDispensarProdutoNoEstadoManutencao() {
+    void testTransicaoDeManutencaoParaProdutoDisponivel() {
+        maquina.setEstado(MaquinaEstadoManutencao.getInstance());
+        assertFalse(maquina.produtoDisponivel());
+    }
+
+    // Teste 20: Manutenção -> Dispensar Produto
+    @Test
+    void testTransicaoDeManutencaoParaDispensarProduto() {
         maquina.setEstado(MaquinaEstadoManutencao.getInstance());
         assertFalse(maquina.dispensarProduto());
-    }
-
-    @Test
-    public void naoDeveDevolverMoedaNoEstadoManutencao() {
-        maquina.setEstado(MaquinaEstadoManutencao.getInstance());
-        assertFalse(maquina.devolverMoeda());
-    }
-
-    @Test
-    public void deveSairDaManutencao() {
-        maquina.setEstado(MaquinaEstadoManutencao.getInstance());
-        assertTrue(maquina.sairManutencao());
-        assertEquals(MaquinaEstadoAguardandoMoeda.getInstance(), maquina.getEstadoAtual());
     }
 }
