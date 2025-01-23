@@ -1,16 +1,10 @@
 package org.example;
 
 public abstract class MaquinaEstado {
-    public boolean inserirMoeda(Maquina maquina){
-        return false;
-    }
     public boolean selecionarProduto(Maquina maquina){
         return false;
     }
     public  boolean dispensarProduto(Maquina maquina){
-        return false;
-    }
-    public boolean devolverMoeda(Maquina maquina){
         return false;
     }
     public boolean produtoDisponivel(Maquina maquina){

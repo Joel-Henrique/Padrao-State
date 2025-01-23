@@ -10,21 +10,12 @@ public class Maquina {
     public void setEstado(MaquinaEstado estado) {
         this.estado = estado;
     }
-
-    public boolean inserirMoeda() {
-        return estado.inserirMoeda(this);
-    }
-
     public boolean selecionarProduto() {
         return estado.selecionarProduto(this);
     }
 
     public boolean dispensarProduto() {
         return estado.dispensarProduto(this);
-    }
-
-    public boolean devolverMoeda() {
-        return estado.devolverMoeda(this);
     }
     public MaquinaEstado getEstadoAtual() {
         return estado;

@@ -1,1 +1,2 @@
-![aspectos.drawio.png](aspectos.drawio.png)
+![aspectos.drawio.png](EstadoMaquina.png)
+![aspectos.drawio.png](Classe.png)
