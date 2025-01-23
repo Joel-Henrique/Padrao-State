@@ -1,1 +1,1 @@
-![Uploading Design sem nome.png…]()
+![aspectos.drawio.png](aspectos.drawio.png)
